@@ -1,4 +1,4 @@
-import secrets, hashlib,random
+import secrets, hashlib,random,time
 
 RSA_KEY_SIZE = 3072  # RSA key size for 128 bits of security (modulu size)
 RSA_PRIME_SIZE = int(RSA_KEY_SIZE / 2)
@@ -25,7 +25,6 @@ def batch_add(A_pre_add, S, x_list, n):
     product = 1
     for x in x_list:
         if x not in S.keys():
-            print("xadd",hash_to_prime(x, ACCUMULATED_PRIME_SIZE))
             hash_prime, nonce = hash_to_prime(x, ACCUMULATED_PRIME_SIZE)
             S[x] = nonce
             product *= hash_prime
@@ -158,23 +157,27 @@ def calculate_product(lst):
 
 n, A0, S = setup()
 
-print("n",n)
-print("A0",A0)
-print("S",S)
+# print("n",n)
+# print("A0",A0)
+# print("S",S)
 
-x_values = ["beec6f0128402baea5a3963f158e1baea97ca1ea943b176ca67a4d27f623a99b","37142a52abbe09faa92e3f605ec64967eaeeb54115589eba034f1cec928e8d09"]
+x_values = [secrets.token_hex(32) for _ in range(100000)]
 
 A1_values = []
 
-print("x:",x_values)
-print("S",S)
+# print("x:",x_values)
+# print("S",S)
+start_time = time.time()
 A1 = batch_add(A0,S,x_values,n)
+end_time = time.time()
+print(end_time - start_time)
 print("A1",A1)
-print("S",S)
-witness = create_all_membership_witnesses(A0,S,n)
-print("wintess:",witness)
-print("n",n)
 
-for i in range(2) : 
- result = verify_membership(A1,x_values[i],0,witness[i],n)
- print(result)
+# print("S",S)
+# witness = create_all_membership_witnesses(A0,S,n)
+# print("wintess:",witness)
+# print("n",n)
+
+# for i in range(2) : 
+#  result = verify_membership(A1,x_values[i],0,witness[i],n)
+#  print(result)
