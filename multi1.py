@@ -141,6 +141,7 @@ if __name__ == '__main__':
     for result_A, local_S in results:
         A1 = (A1 * result_A) % n
         S.update(local_S)
-
+    end = time.time()    
+    print("Time:", end - start )
     print("Final Accumulator Value:", A1)
     print("Final Set Size:", len(S))
