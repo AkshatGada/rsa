@@ -96,7 +96,6 @@ def hash_to_128_bits(hex_string):
     return result_128_bits
 
 def verify_membership(A, x, nonce, proof, n):
-    print("x", hash_to_prime(x=x, num_of_bits=ACCUMULATED_PRIME_SIZE, nonce=nonce)[0])
     return __verify_membership(A, hash_to_prime(x=x, num_of_bits=ACCUMULATED_PRIME_SIZE, nonce=nonce)[0], proof, n)
 
 def __verify_membership(A, x, proof, n):
@@ -127,6 +126,20 @@ def calculate_product(lst):
         r *= x
     return r
 
+def parallel_witness_creation(chunk, A0, n):
+    S_local = {x: nonce for x, nonce in chunk}
+    primes = [hash_to_prime(x=x, nonce=0)[0] for x in S_local.keys()]
+    witnesses = root_factor(A0, primes, n)
+    return list(zip(S_local.keys(), witnesses))
+
+def parallel_membership_verification(chunk, A1, S, n):
+    results = []
+    for x, proof in chunk:
+        nonce = S[x]
+        result = verify_membership(A1, x, nonce, proof, n)
+        results.append(result)
+    return results
+
 if __name__ == '__main__':
     n, A0, S = setup()
     x_values = [secrets.token_hex(32) for _ in range(100000)]
@@ -149,22 +162,37 @@ if __name__ == '__main__':
 
     # Create membership witnesses
     start = time.time()
-    witnesses = create_all_membership_witnesses(A0, S, n)
+    S_items = list(S.items())
+    chunk_size = len(S_items) // multiprocessing.cpu_count()
+    S_chunks = [S_items[i:i + chunk_size] for i in range(0, len(S_items), chunk_size)]
+
+    with multiprocessing.Pool() as pool:
+        witness_results = pool.starmap(parallel_witness_creation, [(chunk, A0, n) for chunk in S_chunks])
+
+    witnesses = {}
+    for result in witness_results:
+        witnesses.update(result)
+    
     end = time.time()
     print("Time to create membership witnesses:", end - start)
-    
+
     # Verify membership witnesses
     start = time.time()
-    verification_results = []
-    for x in S.keys():
-        proof = witnesses.pop(0)
-        nonce = S[x]
-        verification_results.append(verify_membership(A1, x, nonce, proof, n))
+    witness_items = list(witnesses.items())
+    chunk_size = len(witness_items) // multiprocessing.cpu_count()
+    witness_chunks = [witness_items[i:i + chunk_size] for i in range(0, len(witness_items), chunk_size)]
+
+    with multiprocessing.Pool() as pool:
+        verification_results = pool.starmap(parallel_membership_verification, [(chunk, A1, S, n) for chunk in witness_chunks])
+
     end = time.time()
     print("Time to verify membership witnesses:", end - start)
 
+    # Flatten the verification results
+    verification_results_flat = [item for sublist in verification_results for item in sublist]
+
     # Check if all verifications were successful
-    if all(verification_results):
+    if all(verification_results_flat):
         print("All membership proofs verified successfully")
     else:
         print("Some membership proofs failed")
