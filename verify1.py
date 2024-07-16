@@ -142,7 +142,7 @@ def parallel_membership_verification(chunk, A1, S, n):
 
 if __name__ == '__main__':
     n, A0, S = setup()
-    x_values = [secrets.token_hex(32) for _ in range(100000)]
+    x_values = [secrets.token_hex(32) for _ in range(1000)]
     start = time.time()
     chunk_size = len(x_values) // multiprocessing.cpu_count()
     chunks = [x_values[i:i + chunk_size] for i in range(0, len(x_values), chunk_size)]
