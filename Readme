@@ -1,0 +1,7 @@
+Features :=
+
+1. Transaction hahses from a block to b block 
+2. Transactio hashes mapped to their receipts
+3. Function to change accumulator state 
+4. database to store all the mapings 
+5. 
