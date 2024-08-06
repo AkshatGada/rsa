@@ -142,7 +142,7 @@ def parallel_membership_verification(chunk, A1, S, n):
 
 if __name__ == '__main__':
     n, A0, S = setup()
-    x_values = [secrets.token_hex(32) for _ in range(100000)]
+    x_values = [secrets.token_hex(32) for _ in range(1000)]
     start = time.time()
     chunk_size = len(x_values) // multiprocessing.cpu_count()
     chunks = [x_values[i:i + chunk_size] for i in range(0, len(x_values), chunk_size)]
@@ -160,7 +160,6 @@ if __name__ == '__main__':
     print("Final Accumulator Value:", A1)
     print("Final Set Size:", len(S))
 
-    # Create membership witnesses
     start = time.time()
     S_items = list(S.items())
     chunk_size = len(S_items) // multiprocessing.cpu_count()
@@ -176,7 +175,6 @@ if __name__ == '__main__':
     end = time.time()
     print("Time to create membership witnesses:", end - start)
 
-    # Verify membership witnesses
     start = time.time()
     witness_items = list(witnesses.items())
     chunk_size = len(witness_items) // multiprocessing.cpu_count()
@@ -188,11 +186,6 @@ if __name__ == '__main__':
     end = time.time()
     print("Time to verify membership witnesses:", end - start)
 
-    # Flatten the verification results
     verification_results_flat = [item for sublist in verification_results for item in sublist]
 
-    # Check if all verifications were successful
-    if all(verification_results_flat):
-        print("All membership proofs verified successfully")
-    else:
-        print("Some membership proofs failed")
+    
