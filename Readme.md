@@ -1,6 +1,6 @@
 # RSA Accumulator Repository
 
-This repository is maintained by [Your Name], a protocol engineer and developer with a focus on blockchain technology and cryptographic primitives. The project implements an RSA accumulator along with various functionalities for data extraction, benchmarking, and on-chain verification. The code is designed to be efficient, with support for multi-core processing and batching.
+This repository is maintained by Witness Chain . The project implements an RSA accumulator along with various functionalities for data extraction, benchmarking, and on-chain verification. The code is designed to be efficient, with support for multi-core processing and batching.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -8,7 +8,6 @@ This repository is maintained by [Your Name], a protocol engineer and developer 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 The RSA accumulator is a powerful cryptographic tool that allows for the succinct proof of membership or non-membership within a set of elements. This repository provides a robust implementation of the RSA accumulator, including additional scripts for data extraction, benchmarking, and integration with smart contracts for on-chain verification.
@@ -128,6 +127,4 @@ python multi.py
 
 Contributions are welcome! Please fork the repository and submit a pull request with your improvements. Ensure that your code adheres to the repository's style guidelines.
 
-**License**
 
-This project is licensed under the MIT License. See the LICENSE file for details.
