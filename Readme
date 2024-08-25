@@ -1,7 +1,3 @@
-Here's the README formatted for GitHub:
-
----
-
 # RSA Accumulator Repository
 
 This repository is maintained by [Your Name], a protocol engineer and developer with a focus on blockchain technology and cryptographic primitives. The project implements an RSA accumulator along with various functionalities for data extraction, benchmarking, and on-chain verification. The code is designed to be efficient, with support for multi-core processing and batching.
@@ -69,46 +65,4 @@ The RSA accumulator is a powerful cryptographic tool that allows for the succinc
    ```bash
    git clone https://github.com/AkshatGada/rsa.git
    cd rsa
-   ```
 
-2. Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. (Optional) Compile the `verify.sol` contract using a Solidity compiler, such as `solc` or using Remix IDE.
-
-## Usage
-
-1. **Running RSA Operations**
-   - To perform RSA operations on transaction data, use the `rsa.py` script:
-     ```bash
-     python rsa.py
-     ```
-
-2. **Benchmarking**
-   - To run benchmarks on hash generation, accumulation, and verification, use the `benchmark.py` script:
-     ```bash
-     python benchmark.py
-     ```
-
-3. **Multi-Core Processing**
-   - Utilize multiple processing cores for RSA computations with:
-     ```bash
-     python multi.py
-     ```
-
-4. **On-Chain Verification**
-   - Deploy the `verify.sol` contract to your preferred blockchain and interact with it for on-chain verification of RSA accumulator proofs.
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request with your improvements. Ensure that your code adheres to the repository's style guidelines.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
----
-
-You can copy and paste this into the README.md file of your GitHub repository.
