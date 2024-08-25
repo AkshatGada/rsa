@@ -165,29 +165,29 @@ def calculate_product(lst):
     return r
 
 
-# n, A0, S = setup()
+n, A0, S = setup()
 
-# # print("n",n)
-# # print("A0",A0)
-# # print("S",S)
-
-# x_values = [secrets.token_hex(32) for _ in range(100000)]
-
-# A1_values = []
-
-# # print("x:",x_values)
-# # print("S",S)
-# start_time = time.time()
-# A1 = batch_add(A0,S,x_values,n)
-# end_time = time.time()
-# print(end_time - start_time)
-# print("A1",A1)
-
-# print("S",S)
-# witness = create_all_membership_witnesses(A0,S,n)
-# print("wintess:",witness)
 # print("n",n)
+# print("A0",A0)
+# print("S",S)
 
-# for i in range(2) : 
-#  result = verify_membership(A1,x_values[i],0,witness[i],n)
-#  print(result)
+x_values = [secrets.token_hex(32) for _ in range(1000)]
+
+A1_values = []
+
+# print("x:",x_values)
+# print("S",S)
+start_time = time.time()
+A1 = batch_add(A0,S,x_values,n)
+end_time = time.time()
+print(end_time - start_time)
+print("A1",A1)
+
+print("S",S)
+witness = create_all_membership_witnesses(A0,S,n)
+print("wintess:",witness)
+print("n",n)
+
+for i in range(2) : 
+ result = verify_membership(A1,x_values[i],0,witness[i],n)
+ print(result)
