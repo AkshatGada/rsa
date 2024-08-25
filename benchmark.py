@@ -171,7 +171,11 @@ n, A0, S = setup()
 # print("A0",A0)
 # print("S",S)
 
+<<<<<<< HEAD:final.py
 x_values = [secrets.token_hex(32) for _ in range(1000)]
+=======
+x_values = [secrets.token_hex(32) for _ in range(100000)]
+>>>>>>> 52158610db64cd91dcf98a1df3a29d63f32860f0:benchmark.py
 
 A1_values = []
 
@@ -190,4 +194,8 @@ print("n",n)
 
 for i in range(2) : 
  result = verify_membership(A1,x_values[i],0,witness[i],n)
+<<<<<<< HEAD:final.py
  print(result)
+=======
+ print(result)
+>>>>>>> 52158610db64cd91dcf98a1df3a29d63f32860f0:benchmark.py
