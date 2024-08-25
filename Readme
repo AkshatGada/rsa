@@ -1,13 +1,6 @@
-Here's the README formatted for direct pasting into GitHub:
-
----
-
 # RSA Accumulator Project
 
-This repository contains a comprehensive implementation of an RSA accumulator, including various scripts for data extraction, RSA operations, and performance benchmarking. The codebase is designed to handle large-scale operations, including multi-core processing and on-chain verification.
-
 ## Table of Contents
-
 - [Introduction](#introduction)
 - [Files and Modules](#files-and-modules)
   - [allFunctions.py](#allfunctionspy)
@@ -27,7 +20,6 @@ This repository contains a comprehensive implementation of an RSA accumulator, i
 - [License](#license)
 
 ## Introduction
-
 The RSA Accumulator Project aims to provide a robust and efficient implementation of RSA-based accumulators. This includes support for transaction data extraction, accumulator operations, witness generation, multi-core processing, and on-chain verification using Solidity. The project also includes scripts for benchmarking and checkpointing to facilitate extensive testing and validation of the accumulator's performance and reliability.
 
 ## Files and Modules
@@ -80,18 +72,19 @@ This JSON file stores all retrieved transactions and their corresponding hashes.
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the Repository:**
    ```bash
    git clone https://github.com/AkshatGada/rsa.git
    cd rsa
    ```
 
-2. Install necessary dependencies:
+2. **Install Necessary Dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Configure your environment, including API keys and other necessary settings.
+3. **Configure Your Environment:**
+   - Include API keys and other necessary settings.
 
 ## Contributing
 
@@ -100,7 +93,3 @@ We welcome contributions to enhance the functionality and performance of the RSA
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
---- 
-
-This format should work seamlessly on GitHub.
