@@ -64,3 +64,70 @@ The RSA accumulator is a powerful cryptographic tool that allows for the succinc
 1. Install the required Python packages:
    ```bash
    pip install -r requirements.txt
+   
+## Usage
+
+**Running RSA Operations:**
+
+To perform RSA operations on transaction data, use the `rsa.py` script:
+
+```bash
+python rsa.py
+```
+
+**Benchmarking:**
+
+To run benchmarks on hash generation, accumulation, and verification times, use the `benchmark.py` script:
+
+```bash
+python benchmark.py
+```
+
+**Multi-Core Processing (Experimental):**
+
+Utilize multiple processing cores for RSA computations with:
+
+```bash
+python multi.py
+```
+
+**On-Chain Verification:**
+
+1. **Compile the `verify.sol` contract:**
+
+   You may need to compile the `verify.sol` contract using a Solidity compiler before deploying it on-chain. Here are two options:
+
+   - **Solidity Compiler (solc):**
+
+     - Install the Solidity compiler for your environment.
+     - Use the `solc` command to compile the contract:
+
+     ```bash
+     solc --bin --abi verify.sol
+     ```
+
+     This will generate two files: `verify.sol.bin` and `verify.sol.abi`. You'll need these for deployment.
+
+   - **Remix IDE:**
+
+     - Open Remix IDE ([https://remix.ethereum.org](https://remix.ethereum.org)) and create a new project.
+     - Paste the contents of `verify.sol` into the editor.
+     - Select the compiler version and environment (e.g., Injected Web3).
+     - Click the "Compile" button.
+     - You can then access the compiled bytecode and ABI from the "Compile" tab.
+
+2. **Deploy the Contract:**
+
+   Deploy the compiled contract (bytecode) to your preferred blockchain using its deployment tools. The specific steps will vary depending on the blockchain you choose.
+
+3. **Interact with the Contract:**
+
+   Once deployed, interact with the contract's functions (using its ABI) to perform on-chain verification of RSA accumulator proofs. Refer to the blockchain's documentation and smart contract interaction tools for details.
+
+**Contributing**
+
+Contributions are welcome! Please fork the repository and submit a pull request with your improvements. Ensure that your code adheres to the repository's style guidelines.
+
+**License**
+
+This project is licensed under the MIT License. See the LICENSE file for details.
