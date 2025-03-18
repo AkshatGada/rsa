@@ -5,7 +5,6 @@ This repository is maintained by Witness Chain . The project implements an RSA a
 ## Table of Contents
 - [Overview](#overview)
 - [Files and Descriptions](#files-and-descriptions)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 
@@ -57,12 +56,6 @@ The RSA accumulator is a powerful cryptographic tool that allows for the succinc
 11. **batchRsa.py**
     - Implements batching functionality to accumulate multiple elements in a single operation.
     - Note: This script is experimental and has not been fully tested yet.
-
-## Installation
-
-1. Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
    
 ## Usage
 
