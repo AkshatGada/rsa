@@ -37,11 +37,8 @@ for i in range(len(x_values)) :
  result,hash = verify_membership(A1,x_values[i],0,witness[i],n)
  print(result,hash)
 
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> a092a4e75de99847cae83651678a978b8fa82362
